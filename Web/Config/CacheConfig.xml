@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CacheConfig>
+  <CacheProviderItems>
+    <CacheProviderItem name="AspNetCacheProvider" type="MArc.Cache.AspNetCacheProvider, MArc.Cache" desc="本地缓存" />
+  </CacheProviderItems>
+  <CacheConfigItems>
+    <CacheConfigItem desc="全局缓存" priority="0" keyRegex=".*" moduleRegex=".*" providerName="AspNetCacheProvider" minitus="30" isAbsoluteExpiration="true" />
+  </CacheConfigItems>
+</CacheConfig>
