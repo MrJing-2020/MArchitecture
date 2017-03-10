@@ -10,7 +10,7 @@ namespace MArc.Repository
 {
     public class RepositoryAccount : RepositoryBase, IRepositoryAccount
     {
-        private static AccountContext context = new AccountContext();
+        private static AccountDBContext context = new AccountDBContext();
         public RepositoryAccount()
             : base(context)
         { 

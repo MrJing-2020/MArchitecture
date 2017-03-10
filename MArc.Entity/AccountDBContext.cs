@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace MArc.Entity
 {
-    public class AccountContext : DbContextBase
+    public class AccountDBContext : DbContextBase
     {
         private static string connString = CachedConfigContext.Current.DaoConfig.MArc_Account;
-        public AccountContext() 
+        public AccountDBContext() 
             :base(connString)
         {
         }

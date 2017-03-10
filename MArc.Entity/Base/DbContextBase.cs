@@ -15,7 +15,7 @@ namespace MArc.Entity
     /// <summary>
     /// EF数据上下文基类
     /// </summary>
-    public class DbContextBase : DbContext, IDisposable
+    public class DbContextBase : DbContext
     {
         private static string connString = CachedConfigContext.Current.DaoConfig.MArc_Base;
         public DbContextBase(string connectionString)
@@ -31,6 +31,7 @@ namespace MArc.Entity
         }
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
+            //防止生产复数表名
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
         }
