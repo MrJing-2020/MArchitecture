@@ -171,20 +171,20 @@ namespace MArc.Repository
         }
         #endregion
 
-        //public async Task<IQueryable<AppUser>> FindUserInToRole(string roleId)
-        //{
-        //    AppRole role = await RoleManager.FindByIdAsync(roleId);
-        //    string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
-        //    return UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
-        //}
+        public async Task<IQueryable<AppUser>> FindUserInToRole(string roleId)
+        {
+            AppRole role = await RoleManager.FindByIdAsync(roleId);
+            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+            return UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
+        }
 
-        //public async Task<IQueryable<AppUser>> FindUserNotInToRole(string roleId)
-        //{
-        //    AppRole role = await RoleManager.FindByIdAsync(roleId);
-        //    string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
-        //    IQueryable<AppUser> members = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
-        //    IQueryable<AppUser> nonMembers = UserManager.Users.Except(members);
-        //    return nonMembers;
-        //}
+        public async Task<IQueryable<AppUser>> FindUserNotInToRole(string roleId)
+        {
+            AppRole role = await RoleManager.FindByIdAsync(roleId);
+            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+            IQueryable<AppUser> members = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
+            IQueryable<AppUser> nonMembers = UserManager.Users.Except(members);
+            return nonMembers;
+        }
     }
 }
