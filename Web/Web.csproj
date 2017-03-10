@@ -207,6 +207,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MArc.Common\MArc.Common.csproj">
+      <Project>{64cbaa3e-3490-4187-9399-d7ff1ea2bf94}</Project>
+      <Name>MArc.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MArc.IService\MArc.IService.csproj">
       <Project>{2761a026-0228-4a49-9d2d-7c7d8a5457e3}</Project>
       <Name>MArc.IService</Name>
@@ -222,10 +226,6 @@
     <ProjectReference Include="..\MArc.Service\MArc.Service.csproj">
       <Project>{8aef4791-793e-4f2a-8a9f-fcec4f81aae1}</Project>
       <Name>MArc.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MArch\MArc.Common.csproj">
-      <Project>{6492dccd-435f-4e35-aee8-fd7c1da7d7de}</Project>
-      <Name>MArc.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
