@@ -1,21 +1,21 @@
 ﻿using MArc.IService;
 using MArc.Models;
-using MArc.ServiceProvider;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Common;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private IServiceBase serviceBase;
         public UserController()
         {
-            serviceBase = ServiceHelper.GetService<IServiceBase>();
+            serviceBase = this.ServiceBase;
         }
         //
         // GET: /Admin/User/

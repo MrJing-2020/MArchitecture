@@ -146,6 +146,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Common\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -156,7 +157,9 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Config\CacheConfig.xml" />
-    <Content Include="Config\DaoConfig.xml" />
+    <Content Include="Config\DaoConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -216,13 +219,13 @@
       <Project>{a3c4db4e-aac2-4045-91f2-9823e9a8fcf6}</Project>
       <Name>MArc.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MArc.ServiceProvider\MArc.ServiceProvider.csproj">
-      <Project>{12303744-4b77-4869-91ff-3b08876b0427}</Project>
-      <Name>MArc.ServiceProvider</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MArc.Service\MArc.Service.csproj">
       <Project>{8aef4791-793e-4f2a-8a9f-fcec4f81aae1}</Project>
       <Name>MArc.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MArch\MArc.Common.csproj">
+      <Project>{6492dccd-435f-4e35-aee8-fd7c1da7d7de}</Project>
+      <Name>MArc.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
