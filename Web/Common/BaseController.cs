@@ -25,5 +25,12 @@ namespace Web.Common
                 return ServiceContext.Current.ServiceAccount;
             }
         }
+        public IServiceIdentity ServiceIdentity
+        {
+            get
+            {
+                return ServiceContext.Current.ServiceIdentity;
+            }
+        }
     }
 }

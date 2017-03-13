@@ -256,6 +256,10 @@
       <Project>{f48ec7fb-f7f1-4a6a-8d8d-d20ffd35f8f1}</Project>
       <Name>MArc.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MArc.Repository\MArc.Repository.csproj">
+      <Project>{a3c4db4e-aac2-4045-91f2-9823e9a8fcf6}</Project>
+      <Name>MArc.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MArc.Service\MArc.Service.csproj">
       <Project>{8aef4791-793e-4f2a-8a9f-fcec4f81aae1}</Project>
       <Name>MArc.Service</Name>

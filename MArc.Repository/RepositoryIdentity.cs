@@ -9,10 +9,14 @@ using Microsoft.AspNet.Identity.Owin;
 using MArc.Models;
 using System.Linq.Expressions;
 using Microsoft.AspNet.Identity;
+using MArc.IRepository;
 
 namespace MArc.Repository
 {
-    public class RepositoryIdentity
+    /// <summary>
+    /// Identity相关操作
+    /// </summary>
+    public class RepositoryIdentity : IRepositoryIdentity
     {
         private AppUserManager UserManager
         {
@@ -185,6 +189,44 @@ namespace MArc.Repository
             IQueryable<AppUser> members = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
             IQueryable<AppUser> nonMembers = UserManager.Users.Except(members);
             return nonMembers;
+        }
+
+        public async Task<bool> AddToRole(string userId, string roleName)
+        {
+            IdentityResult result = await UserManager.AddToRoleAsync(userId, roleName);
+            if (result.Succeeded)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> RemoveFromRole(string userId, string roleName)
+        {
+            IdentityResult result = await UserManager.RemoveFromRoleAsync(userId, roleName);
+            if (result.Succeeded)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Dispose()
+        {
+            if (UserManager != null)
+            {
+                UserManager.Dispose();
+            }
+            if (RoleManager != null)
+            {
+                RoleManager.Dispose();
+            }
         }
     }
 }

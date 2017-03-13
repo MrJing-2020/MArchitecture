@@ -34,5 +34,13 @@ namespace MArc.Common
                 return ServiceHelper.GetService<IServiceAccount>();
             }
         }
+
+        public IServiceIdentity ServiceIdentity
+        {
+            get
+            {
+                return ServiceHelper.GetService<IServiceIdentity>();
+            }
+        }
     }
 }
