@@ -131,6 +131,27 @@ namespace MArc.Service
             return await repositoryIdentity.RemoveFromRole(userId, roleName);
         }
 
+        public async Task<bool> AddRefreshToken(RefreshToken token)
+        {
+
+            return await repositoryIdentity.AddRefreshToken(token);
+        }
+
+        public async Task<bool> RemoveRefreshToken(string refreshTokenId)
+        {
+            return await repositoryIdentity.RemoveRefreshToken(refreshTokenId);
+        }
+
+        public async Task<bool> RemoveRefreshToken(RefreshToken refreshToken)
+        {
+            return await repositoryIdentity.RemoveRefreshToken(refreshToken);
+        }
+
+        public async Task<RefreshToken> FindRefreshToken(string refreshTokenId)
+        {
+            return await repositoryIdentity.FindRefreshToken(refreshTokenId);
+        }
+
         public void Dispose()
         {
             if (repositoryIdentity != null)

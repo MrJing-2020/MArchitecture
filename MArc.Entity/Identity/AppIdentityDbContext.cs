@@ -29,5 +29,7 @@ namespace MArc.Entity
         {
             return new AppIdentityDbContext();
         }
+
+        public DbSet<RefreshToken> RefreshToken { get; set; }
     }
 }

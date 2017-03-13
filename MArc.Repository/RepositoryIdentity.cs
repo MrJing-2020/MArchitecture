@@ -18,9 +18,17 @@ namespace MArc.Repository
     /// </summary>
     public class RepositoryIdentity : IRepositoryIdentity
     {
+        private AppIdentityDbContext context;
+        public RepositoryIdentity()
+        {
+            context = AppIdentityDbContext.Create();
+        }
         private AppUserManager UserManager
         {
-            get { return HttpContext.Current.GetOwinContext().GetUserManager<AppUserManager>(); }
+            get 
+            { 
+                return HttpContext.Current.GetOwinContext().GetUserManager<AppUserManager>(); 
+            }
         }
         private AppRoleManager RoleManager
         {
@@ -217,16 +225,61 @@ namespace MArc.Repository
             }
         }
 
+        public async Task<bool> AddRefreshToken(RefreshToken token)
+        {
+
+            var existingToken = context.RefreshToken.SingleOrDefault(r => r.Subject == token.Subject);
+
+            if (existingToken != null)
+            {
+                var result = await RemoveRefreshToken(existingToken);
+            }
+
+            context.RefreshToken.Add(token);
+
+            return await context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> RemoveRefreshToken(string refreshTokenId)
+        {
+            var refreshToken = await context.RefreshToken.FindAsync(refreshTokenId);
+
+            if (refreshToken != null)
+            {
+                context.RefreshToken.Remove(refreshToken);
+                return await context.SaveChangesAsync() > 0;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> RemoveRefreshToken(RefreshToken refreshToken)
+        {
+            context.RefreshToken.Remove(refreshToken);
+            return await context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<RefreshToken> FindRefreshToken(string refreshTokenId)
+        {
+            var refreshToken = await context.RefreshToken.FindAsync(refreshTokenId);
+
+            return refreshToken;
+        }
+
         public void Dispose()
         {
             if (UserManager != null)
             {
                 UserManager.Dispose();
-            }
+            };
             if (RoleManager != null)
             {
                 RoleManager.Dispose();
-            }
+            };
+            if (context != null)
+            {
+                context.Dispose();
+            };
         }
     }
 }

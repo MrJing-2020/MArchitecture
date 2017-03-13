@@ -53,5 +53,12 @@ namespace MArc.IService
         Task<bool> AddToRole(string userId, string roleName);
 
         Task<bool> RemoveFromRole(string userId, string roleName);
+        Task<bool> AddRefreshToken(RefreshToken token);
+
+        Task<bool> RemoveRefreshToken(string refreshTokenId);
+
+        Task<bool> RemoveRefreshToken(RefreshToken refreshToken);
+
+        Task<RefreshToken> FindRefreshToken(string refreshTokenId);
     }
 }

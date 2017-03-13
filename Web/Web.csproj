@@ -64,6 +64,10 @@
       <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
       <Private>True</Private>
@@ -179,6 +183,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Common\BaseController.cs" />
+    <Compile Include="Common\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Common\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -263,6 +269,10 @@
     <ProjectReference Include="..\MArc.Service\MArc.Service.csproj">
       <Project>{8aef4791-793e-4f2a-8a9f-fcec4f81aae1}</Project>
       <Name>MArc.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MArc.Utility\MArc.Utility.csproj">
+      <Project>{9a95fe31-92e2-433b-a233-c76a0be80b7a}</Project>
+      <Name>MArc.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
