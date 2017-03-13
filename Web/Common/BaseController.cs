@@ -7,6 +7,7 @@ namespace Web.Common
 {
     using MArc.Common;
     using MArc.IService;
+    using MArc.Models;
     using System.Web.Mvc;
 
     public class BaseController:Controller
@@ -30,6 +31,13 @@ namespace Web.Common
             get
             {
                 return ServiceContext.Current.ServiceIdentity;
+            }
+        }
+        public AppUser LoginUser
+        {
+            get
+            {
+                return ServiceIdentity.FindUserByName(User.Identity.Name).Result;
             }
         }
     }

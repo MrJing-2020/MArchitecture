@@ -7,9 +7,15 @@ using System.Web.Http;
 
 namespace Web.Controllers
 {
+    /// <summary>
+    /// 控制器注释
+    /// </summary>
     public class ValuesController : ApiController
     {
-        // GET api/values
+        /// <summary>
+        /// 这是借口说明
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
