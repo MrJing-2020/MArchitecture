@@ -22,30 +22,30 @@ namespace Web
             app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
             app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
 
-            //var config = new HttpConfiguration();
-            //WebApiConfig.Register(config);
-            //app.UseCors(CorsOptions.AllowAll);
-            //ConfigureOAuth(app);
+            var config = new HttpConfiguration();
+            WebApiConfig.Register(config);
+            app.UseCors(CorsOptions.AllowAll);
+            ConfigureOAuth(app);
 
-            //app.UseWebApi(config);
+            app.UseWebApi(config);
         }
 
-        //public void ConfigureOAuth(IAppBuilder app)
-        //{
-        //    OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
-        //    {
-        //        AllowInsecureHttp = true,
-        //        TokenEndpointPath = new PathString("/token"),
-        //        AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
-        //        Provider = new SimpleAuthorizationServerProvider(),
+        public void ConfigureOAuth(IAppBuilder app)
+        {
+            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
+            {
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString("/token"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
+                Provider = new SimpleAuthorizationServerProvider(),
 
-        //        //refresh token provider
-        //        RefreshTokenProvider = new SimpleRefreshTokenProvider()
-        //    };
+                //refresh token provider
+                RefreshTokenProvider = new SimpleRefreshTokenProvider()
+            };
 
-        //    // Token Generation
-        //    app.UseOAuthAuthorizationServer(OAuthServerOptions);
-        //    app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-        //}
+            // Token Generation
+            app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+        }
     }
 }

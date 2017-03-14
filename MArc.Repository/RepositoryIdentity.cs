@@ -26,8 +26,9 @@ namespace MArc.Repository
         private AppUserManager UserManager
         {
             get 
-            { 
+            {
                 return HttpContext.Current.GetOwinContext().GetUserManager<AppUserManager>(); 
+                //return AppUserManager.Create();
             }
         }
         private AppRoleManager RoleManager
@@ -35,6 +36,14 @@ namespace MArc.Repository
             get
             {
                 return HttpContext.Current.GetOwinContext().GetUserManager<AppRoleManager>();
+                //return AppRoleManager.Create();
+            }
+        }
+        private AppUserManager UserManagerForFind
+        {
+            get
+            {
+                return AppUserManager.GetUserManager();
             }
         }
         #region AppUser增删查改
@@ -63,6 +72,10 @@ namespace MArc.Repository
         public async Task<AppUser> FindUserByName(string userName)
         {
             return await UserManager.FindByNameAsync(userName);
+        }
+        public async Task<AppUser> FindLoginUserByName(string userName)
+        {
+            return await UserManagerForFind.FindByNameAsync(userName);
         }
         #endregion
 

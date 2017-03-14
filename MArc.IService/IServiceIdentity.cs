@@ -19,6 +19,7 @@ namespace MArc.IService
         Task<AppUser> FindUserById(string userId);
         Task<AppUser> FindUserByEmail(string email);
         Task<AppUser> FindUserByName(string userName);
+        Task<AppUser> FindLoginUserByName(string userName);
         #endregion
 
         Task<bool> CreateUser(AppUser user, string password);

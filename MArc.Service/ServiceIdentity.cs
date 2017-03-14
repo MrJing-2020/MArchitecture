@@ -48,6 +48,10 @@ namespace MArc.Service
         {
             return await repositoryIdentity.FindUserByName(userName);
         }
+        public async Task<AppUser> FindLoginUserByName(string userName)
+        {
+            return await repositoryIdentity.FindLoginUserByName(userName);
+        }
         #endregion
 
         public async Task<bool> CreateUser(AppUser user, string password)

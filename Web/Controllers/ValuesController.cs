@@ -13,7 +13,7 @@ namespace Web.Controllers
     public class ValuesController : ApiController
     {
         /// <summary>
-        /// 这是借口说明
+        /// 这是接口说明
         /// </summary>
         /// <returns></returns>
         public IEnumerable<string> Get()

@@ -27,19 +27,13 @@ namespace Web.Common
             using (AppUserManager manager = HttpContext.Current.GetOwinContext().GetUserManager<AppUserManager>())
             {
                 AppUser user = await manager.FindAsync(context.UserName, context.Password);
-
                 if (user == null)
                 {
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
                 }
-                claimsIdentity = await manager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                claimsIdentity = await manager.CreateIdentityAsync(user, context.Options.AuthenticationType);
             }
-
-            //var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            //identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-            //identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
-            //identity.AddClaim(new Claim("sub", context.UserName));
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
