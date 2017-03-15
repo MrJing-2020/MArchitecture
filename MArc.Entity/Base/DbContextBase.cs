@@ -7,8 +7,6 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MArc.Entity
 {
@@ -21,13 +19,15 @@ namespace MArc.Entity
         public DbContextBase(string connectionString)
         {
             this.Database.Connection.ConnectionString = connectionString;
+            //Database.SetInitializer<DbContextBase>(new CreateDatabaseIfNotExists<DbContextBase>());
             Database.SetInitializer<DbContextBase>(null);
         }
         public DbContextBase()
             : base(connString)
         {
             this.Database.Connection.ConnectionString = connString;
-            Database.SetInitializer<DbContextBase>(null);
+            //Database.SetInitializer<DbContextBase>(new CreateDatabaseIfNotExists<DbContextBase>());
+            //Database.SetInitializer<DbContextBase>(null);
         }
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
@@ -133,6 +133,7 @@ namespace MArc.Entity
         #region 映射的数据库表
         public DbSet<Menu> Menu { get; set; }
         public DbSet<MenuRole> MenuRole { get; set; }
+        //public DbSet<Test> Test { get; set; }
         #endregion
     }
 }

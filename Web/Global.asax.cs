@@ -22,8 +22,9 @@ namespace Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //EntityModel表更自动更新数据表结构
-            System.Data.Entity.Database.SetInitializer<AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, ConfigurationIdentity>());
-            System.Data.Entity.Database.SetInitializer<DbContextBase>(new MigrateDatabaseToLatestVersion<DbContextBase, ConfigurationBase>());
+            Database.SetInitializer<AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, ConfigurationIdentity>());
+            Database.SetInitializer<DbContextBase>(new MigrateDatabaseToLatestVersion<DbContextBase, ConfigurationBase>());
+            //Database.SetInitializer<DbContextBase>(null);
         }
     }
 }
