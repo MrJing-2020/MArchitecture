@@ -123,7 +123,7 @@ namespace MArc.Entity
             this.SaveChanges();
         }
 
-        public void Remove<T>(params int[] ids) where T : BaseModel
+        public void Remove<T>(params string[] ids) where T : BaseModel
         {
             this.Set<T>().Delete(ids);
             this.SaveChanges();
@@ -131,8 +131,8 @@ namespace MArc.Entity
         #endregion
 
         #region 映射的数据库表
-        public DbSet<User> User { get; set; } 
-
+        public DbSet<Menu> Menu { get; set; }
+        public DbSet<MenuRole> MenuRole { get; set; }
         #endregion
     }
 }

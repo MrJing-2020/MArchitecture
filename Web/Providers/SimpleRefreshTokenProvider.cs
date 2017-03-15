@@ -11,11 +11,14 @@ using MArc.IService;
 using MArc.Common;
 using MArc.Utility;
 
-namespace Web.Common
+namespace Web.Providers
 {
+    /// <summary>
+    /// token刷新
+    /// </summary>
     public class SimpleRefreshTokenProvider : IAuthenticationTokenProvider
     {
-        private IServiceIdentity serviceIdentity
+        private IServiceIdentity ServiceIdentity
         {
             get
             {
@@ -40,7 +43,7 @@ namespace Web.Common
 
                 token.ProtectedTicket = context.SerializeTicket();
 
-                var result = await serviceIdentity.AddRefreshToken(token);
+                var result = await ServiceIdentity.AddRefreshToken(token);
 
                 if (result)
                 {
@@ -53,13 +56,13 @@ namespace Web.Common
         public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
             string hashedTokenId = context.Token.GetHash();
-            var refreshToken = await serviceIdentity.FindRefreshToken(hashedTokenId);
+            var refreshToken = await ServiceIdentity.FindRefreshToken(hashedTokenId);
 
             if (refreshToken != null)
             {
                 //Get protectedTicket from refreshToken class
                 context.DeserializeTicket(refreshToken.ProtectedTicket);
-                var result = await serviceIdentity.RemoveRefreshToken(hashedTokenId);
+                var result = await ServiceIdentity.RemoveRefreshToken(hashedTokenId);
             }
         }
 

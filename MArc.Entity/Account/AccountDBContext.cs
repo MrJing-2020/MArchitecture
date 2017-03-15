@@ -16,7 +16,5 @@ namespace MArc.Entity
             :base(connString)
         {
         }
-
-        public DbSet<Book> book { get; set; } 
     }
 }

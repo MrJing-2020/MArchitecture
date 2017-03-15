@@ -8,13 +8,13 @@
     using System.Linq;
     using Microsoft.AspNet.Identity;
 
-    public sealed class Configuration : DbMigrationsConfiguration<AppIdentityDbContext>
+    public sealed class ConfigurationIdentity : DbMigrationsConfiguration<AppIdentityDbContext>
     {
-        public Configuration()
+        public ConfigurationIdentity()
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "IdentityTest.Models.AppIdentityDbContext";
+            ContextKey = "MArc.Entity.AppIdentityDbContext";
         }
 
         protected override void Seed(AppIdentityDbContext context)

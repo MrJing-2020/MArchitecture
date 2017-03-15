@@ -22,5 +22,14 @@ namespace MArc.Entity
         {
             return new AppRoleManager(new RoleStore<AppRole>(context.Get<AppIdentityDbContext>()));
         }
+
+        /// <summary>
+        /// 解决context无法跨线程的问题(供查询角色用)
+        /// </summary>
+        /// <returns></returns>
+        public static AppRoleManager GetRoleManager()
+        {
+            return new AppRoleManager(new RoleStore<AppRole>(new AppIdentityDbContext()));
+        }
     }
 }

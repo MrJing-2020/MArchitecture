@@ -8,6 +8,6 @@ namespace MArc.Models
 {
     public class BaseModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 }

@@ -86,7 +86,7 @@ namespace MArc.Entity
             return tEntities;
         }
 
-        public static TEntity FindById<TEntity>(this DbSet<TEntity> dbSet, int id)
+        public static TEntity FindById<TEntity>(this DbSet<TEntity> dbSet, string id)
         where TEntity : BaseModel
         {
             return dbSet.FirstOrDefault((TEntity p) => p.Id == id);
@@ -122,11 +122,11 @@ namespace MArc.Entity
         #endregion
 
         #region 删除相关
-        public static void Delete<TEntity>(this DbSet<TEntity> dbSet, params int[] ids)
+        public static void Delete<TEntity>(this DbSet<TEntity> dbSet, params string[] ids)
         where TEntity : BaseModel
         {
             List<TEntity> tEntities = new List<TEntity>();
-            int[] objArray = ids;
+            string[] objArray = ids;
             for (int i = 0; i < objArray.Length; i++)
             {
                 tEntities.Add(dbSet.FindById<TEntity>(objArray[i]));

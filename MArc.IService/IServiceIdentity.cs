@@ -38,6 +38,7 @@ namespace MArc.IService
         Task<AppRole> FindRoleById(string roleId);
         Task<AppRole> FindRoleByName(string roleName);
         Task<bool> RoleExists(string roleName);
+        IQueryable<AppRole> FindRoleGeneral(Expression<Func<AppRole, bool>> conditions = null);
         #endregion
 
         Task<bool> CreateRole(AppRole role);

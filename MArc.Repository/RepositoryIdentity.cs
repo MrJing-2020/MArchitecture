@@ -46,6 +46,13 @@ namespace MArc.Repository
                 return AppUserManager.GetUserManager();
             }
         }
+        private AppRoleManager RoleManagerForFind
+        {
+            get
+            {
+                return AppRoleManager.GetRoleManager();
+            }
+        }
         #region AppUser增删查改
 
         #region AppUser查询
@@ -153,6 +160,10 @@ namespace MArc.Repository
         public async Task<bool> RoleExists(string roleName)
         {
             return await RoleManager.RoleExistsAsync(roleName);
+        }
+        public IQueryable<AppRole> FindRoleGeneral(Expression<Func<AppRole, bool>> conditions = null)
+        {
+            return RoleManagerForFind.Roles.Where(conditions);
         }
         #endregion
 

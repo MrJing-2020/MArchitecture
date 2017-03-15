@@ -89,7 +89,7 @@ namespace MArc.Service
         #endregion
 
         #region 删除相关
-        public void Remove<T>(params int[] ids) where T : BaseModel
+        public void Remove<T>(params string[] ids) where T : BaseModel
         {
             repositoryBase.Remove<T>(ids);
         }

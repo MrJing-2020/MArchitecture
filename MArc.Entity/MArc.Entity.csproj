@@ -88,13 +88,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountDBContext.cs" />
+    <Compile Include="Account\AccountDBContext.cs" />
+    <Compile Include="Base\ConfigurationBase.cs" />
     <Compile Include="Identity\AppIdentityDbContext.cs" />
     <Compile Include="Base\DbContextBase.cs" />
     <Compile Include="DbSetExtend.cs" />
     <Compile Include="Identity\AppRoleManager.cs" />
     <Compile Include="Identity\AppUserManager.cs" />
-    <Compile Include="Identity\Configuration.cs" />
+    <Compile Include="Identity\ConfigurationIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

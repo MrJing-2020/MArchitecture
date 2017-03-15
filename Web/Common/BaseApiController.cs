@@ -41,7 +41,7 @@ namespace Web.Common
             {
                 string userName = User.Identity.Name;
                 AppUser user = null;
-                //开启新线程async方法，防止线程锁死
+                //开启新线程执行async方法，防止线程锁死(使用async await可不必如此，这里想让它以同步方式执行)
                 Task.Run<AppUser>(() => ServiceIdentity.FindLoginUserByName(User.Identity.Name))
                 .ContinueWith(m => { m.Wait(); user = m.Result; })
                 .Wait();

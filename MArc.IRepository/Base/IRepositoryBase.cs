@@ -27,7 +27,7 @@ namespace MArc.IRepository
         T Insert<T>(T entity) where T : class;
         void Insert<T>(IEnumerable<T> entities) where T : class;
 
-        void Remove<T>(params int[] ids) where T : BaseModel;
+        void Remove<T>(params string[] ids) where T : BaseModel;
         void Remove<T>(Expression<Func<T, bool>> where) where T : class;
     }
 }

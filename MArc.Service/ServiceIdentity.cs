@@ -97,6 +97,10 @@ namespace MArc.Service
         {
             return await repositoryIdentity.RoleExists(roleName);
         }
+        public IQueryable<AppRole> FindRoleGeneral(Expression<Func<AppRole, bool>> conditions = null)
+        {
+            return repositoryIdentity.FindRoleGeneral(conditions);
+        }
         #endregion
 
         public async Task<bool> CreateRole(AppRole role)

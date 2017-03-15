@@ -6,8 +6,8 @@ using Microsoft.Owin.Cors;
 using Owin;
 using MArc.Entity;
 using System.Web.Http;
-using Web.Common;
 using Microsoft.AspNet.Identity;
+using Web.Providers;
 
 [assembly: OwinStartup(typeof(Web.Startup))]
 

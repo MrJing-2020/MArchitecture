@@ -11,8 +11,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Web.Common
+namespace Web.Providers
 {
+    /// <summary>
+    /// 密码验证，token发放
+    /// </summary>
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)

@@ -78,7 +78,7 @@ namespace MArc.Repository
         }
         public T SaveEntity<T>(T entity) where T : BaseModel
         {
-            if (entity.Id > 0)
+            if (string.IsNullOrEmpty(entity.Id))
             {
                 Update<T>(entity);
             }
@@ -102,7 +102,7 @@ namespace MArc.Repository
         #endregion
 
         #region 删除相关
-        public void Remove<T>(params int[] ids) where T : BaseModel
+        public void Remove<T>(params string[] ids) where T : BaseModel
         {
             context.Remove<T>(ids);
         }

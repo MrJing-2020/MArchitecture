@@ -15,9 +15,9 @@ namespace MArc.Entity
         public AppIdentityDbContext()
             : base(connString)
         {
-            //System.Data.Entity.Database.SetInitializer<AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, Configuration>());
+            //System.Data.Entity.Database.SetInitializer<AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, ConfigurationIdentity>());
+            Database.SetInitializer<AppIdentityDbContext>(null);
         }
-
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
             //防止生产复数表名
@@ -30,6 +30,8 @@ namespace MArc.Entity
             return new AppIdentityDbContext();
         }
 
-        public DbSet<RefreshToken> RefreshToken { get; set; }
+        #region 映射的数据库表
+        public DbSet<RefreshToken> RefreshToken { get; set; } 
+        #endregion
     }
 }

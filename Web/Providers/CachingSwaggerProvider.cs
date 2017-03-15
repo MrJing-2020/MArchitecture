@@ -7,8 +7,11 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 
-namespace Web.Common
+namespace Web.Providers
 {
+    /// <summary>
+    /// swagger缓存提供程序
+    /// </summary>
     public class CachingSwaggerProvider : ISwaggerProvider
     {
         private static ConcurrentDictionary<string, SwaggerDocument> _cache =

@@ -20,7 +20,10 @@ namespace Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            System.Data.Entity.Database.SetInitializer<AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, Configuration>());
+
+            //EntityModel表更自动更新数据表结构
+            System.Data.Entity.Database.SetInitializer<AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, ConfigurationIdentity>());
+            System.Data.Entity.Database.SetInitializer<DbContextBase>(new MigrateDatabaseToLatestVersion<DbContextBase, ConfigurationBase>());
         }
     }
 }
