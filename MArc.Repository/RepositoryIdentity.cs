@@ -53,6 +53,7 @@ namespace MArc.Repository
                 return AppRoleManager.GetRoleManager();
             }
         }
+
         #region AppUser增删查改
 
         #region AppUser查询
@@ -135,7 +136,11 @@ namespace MArc.Repository
             {
                 return false;
             }
-        }  
+        }
+        public string GetHashPassword(string password)
+        {
+            return UserManager.PasswordHasher.HashPassword(password);
+        }
         #endregion
 
         #region AppRole增删查改
@@ -249,6 +254,7 @@ namespace MArc.Repository
             }
         }
 
+        #region token刷新相关
         public async Task<bool> AddRefreshToken(RefreshToken token)
         {
 
@@ -288,7 +294,10 @@ namespace MArc.Repository
             var refreshToken = await context.RefreshToken.FindAsync(refreshTokenId);
 
             return refreshToken;
-        }
+        } 
+        #endregion
+
+
 
         public void Dispose()
         {

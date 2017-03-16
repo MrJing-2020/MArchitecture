@@ -8,34 +8,36 @@ namespace Web.Common
     using MArc.Common;
     using MArc.IService;
     using MArc.Models;
+    using System.Net;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Mvc;
 
     public class BaseApiController : ApiController
     {
-        public IServiceBase ServiceBase
+        protected IServiceBase ServiceBase
         {
             get
             {
                 return ServiceContext.Current.ServiceBase;
             }
         }
-        public IServiceAccount ServiceAccount
+        protected IServiceAccount ServiceAccount
         {
             get
             {
                 return ServiceContext.Current.ServiceAccount;
             }
         }
-        public IServiceIdentity ServiceIdentity
+        protected IServiceIdentity ServiceIdentity
         {
             get
             {
                 return ServiceContext.Current.ServiceIdentity;
             }
         }
-        public AppUser LoginUser
+        protected AppUser LoginUser
         {
             get
             {
@@ -47,6 +49,21 @@ namespace Web.Common
                 .Wait();
                 return user;
             }
+        }
+
+        protected HttpResponseMessage Response<T>(T data)
+        {
+            return Request.CreateResponse<T>(HttpStatusCode.OK, data);
+        }
+        protected HttpResponseMessage Response<T>(HttpStatusCode statusCode, T data)
+        {
+            return Request.CreateResponse<T>(statusCode, data);
+        }
+        protected HttpResponseMessage Response<T>(T data,Uri url)
+        {
+            var response = Request.CreateResponse<T>(HttpStatusCode.OK, data);
+            response.Headers.Location = url;
+            return response;
         }
     }
 }

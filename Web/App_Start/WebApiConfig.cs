@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Web.Attribute;
 
 namespace Web
 {
@@ -16,9 +17,12 @@ namespace Web
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //config.Filters.Add(new ApiCustomAuthorizeAttribute());
+            config.Filters.Add(new ApiExceptionFilterAttribute());
         }
     }
 }

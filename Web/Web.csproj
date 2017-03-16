@@ -181,7 +181,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -190,7 +191,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserManagerController.cs" />
     <Compile Include="Attribute\ApiCustomAuthorizeAttribute.cs" />
+    <Compile Include="Attribute\ApiExceptionFilterAttribute.cs" />
     <Compile Include="Attribute\CustomAuthorizeAttribute.cs" />
     <Compile Include="Common\BaseApiController.cs" />
     <Compile Include="Common\BaseController.cs" />
@@ -218,6 +222,8 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <EmbeddedResource Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <None Include="Properties\PublishProfiles\MArchitecture.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

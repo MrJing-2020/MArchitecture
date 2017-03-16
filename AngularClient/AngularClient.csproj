@@ -77,6 +77,7 @@
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\errors.json" />
     <Content Include="scripts\version.json" />
+    <None Include="Properties\PublishProfiles\AngularClient.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

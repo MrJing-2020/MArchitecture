@@ -72,6 +72,10 @@ namespace MArc.Service
         {
             return await repositoryIdentity.DeleteUser(user);
         }
+        public string GetHashPassword(string password)
+        {
+            return repositoryIdentity.GetHashPassword(password);
+        }
         #endregion
 
         #region AppRole增删查改

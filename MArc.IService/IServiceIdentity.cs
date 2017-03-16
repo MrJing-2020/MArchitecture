@@ -28,6 +28,8 @@ namespace MArc.IService
         Task<bool> UpdateUser(AppUser user);
 
         Task<bool> DeleteUser(AppUser user);
+
+        string GetHashPassword(string password);
         #endregion
 
         #region AppRole增删查改

@@ -15,8 +15,6 @@ namespace MArc.Entity
         public AppIdentityDbContext()
             : base(connString)
         {
-            //System.Data.Entity.Database.SetInitializer<AppIdentityDbContext>(new MigrateDatabaseToLatestVersion<AppIdentityDbContext, ConfigurationIdentity>());
-            Database.SetInitializer<AppIdentityDbContext>(null);
         }
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
