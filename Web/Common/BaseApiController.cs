@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Web.Common
 {
+    using AutoMapper;
     using MArc.Common;
     using MArc.IService;
     using MArc.Models;
@@ -64,6 +65,17 @@ namespace Web.Common
             var response = Request.CreateResponse<T>(HttpStatusCode.OK, data);
             response.Headers.Location = url;
             return response;
+        }
+        /// <summary>
+        /// 将T1映射为T2
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected T2 Map<T1,T2>(T1 model)
+        {
+            return Mapper.Map<T2>(model);
         }
     }
 }

@@ -17,28 +17,43 @@ namespace Web.Areas.Admin.Controllers
     public class UserManagerController : BaseApiController
     {
         [HttpGet]
-        public List<AppUser> GetAllUsers()
+        public HttpResponseMessage GetAllUsers()
         {
-            var list = ServiceIdentity.FindUser().ToList();
-            return list;
+            var list = ServiceBase.FindBy<UserViewModel>("select Id, Email,PhoneNumber,UserName from AspNetUsers");
+            if (list != null)
+            {
+                return Response(list);
+            }
+            else
+            {
+                return Response(HttpStatusCode.NotFound, "未找到任何信息");
+            }
         }
         [HttpGet]
-        public async Task<AppUser> GetUserDetail(string id)
+        public async Task<HttpResponseMessage> GetUserDetail(string id)
         {
-            var user = await ServiceIdentity.FindUserById(id);
-            return user;
+            var AppUser = await ServiceIdentity.FindUserById(id);
+            var user = Map<AppUser,UserViewModel>(AppUser);
+            if (user != null)
+            {
+                return Response(user);
+            }
+            else
+            {
+                return Response(HttpStatusCode.NotFound, "未找到任何信息");
+            }
         }
         [HttpPost]
         public async Task<HttpResponseMessage> SubUserData(UserViewModel model)
         {
             if (string.IsNullOrEmpty(model.Id))
             {
-                var user = new AppUser { UserName = model.Name, Email = model.Email };
+                var user = new AppUser { UserName = model.UserName, Email = model.Email };
                 //传入Password并转换成PasswordHash
                 bool result = await ServiceIdentity.CreateUser(user, model.Password);
                 if (result == true)
                 {
-                    return Response(user, new Uri("GetAllUsers"));
+                    return Response(user, new Uri("/UserManager/GetAllUsers"));
                 }
                 else
                 {

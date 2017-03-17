@@ -113,7 +113,7 @@ var SwaggerTranslator = (function () {
             $('body').append('<style type="text/css">.controller-summary{color:#10a54a !important;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:250px;text-align:right;cursor:default;} </style>');
             $("#logo").html("接口描述").attr("href", "/swagger");
             $("#api_info").remove()
-            $(".response-class .markdown p").remove()
+            //$(".response-class .markdown p").remove()
             $("#message-bar").remove()
             $(".submit").addClass("btn btn-info btn-sm")
             $(document.getElementsByName("responseContentType")).addClass("form-control input-sm")
